@@ -1,58 +1,26 @@
-import React from "react";
-import Course from "./components/Course";
+import React, { useState } from "react";
+import Filter from "./components/Filter";
+import Persons from "./components/Persons";
+import PersonForm from "./components/PersonForm";
 
 const App = () => {
-  const courses = [
-    {
-      name: "Half Stack application development",
-      id: 1,
-      parts: [
-        {
-          name: "Fundamentals of React",
-          exercises: 10,
-          id: 1,
-        },
-        {
-          name: "Using props to pass data",
-          exercises: 7,
-          id: 2,
-        },
-        {
-          name: "State of a component",
-          exercises: 14,
-          id: 3,
-        },
-        {
-          name: "Redux",
-          exercises: 11,
-          id: 4,
-        },
-      ],
-    },
-    {
-      name: "Node.js",
-      id: 2,
-      parts: [
-        {
-          name: "Routing",
-          exercises: 3,
-          id: 1,
-        },
-        {
-          name: "Middlewares",
-          exercises: 7,
-          id: 2,
-        },
-      ],
-    },
-  ];
+  const [persons, setPersons] = useState([
+    { name: "Aldi Gunawan", number: "897698789", id: 1 },
+    { name: "Fajar Riadi", number: "897698789", id: 2 },
+    { name: "Agus Sali", number: "897698789", id: 3 },
+  ]);
+
+  const [searchName, setSearchName] = useState("");
 
   return (
     <div>
-      <h1>Web Development Curriculum</h1>
-      {courses.map((course) => (
-        <Course key={course.id} course={course} />
-      ))}
+      <h2>Phonebook</h2>
+      <h3>Filter Phonebook</h3>
+      <Filter search={searchName} setSearch={setSearchName} />
+      <h3>Add New Phonebook</h3>
+      <PersonForm persons={persons} setPersons={setPersons} />
+      <h2>Number</h2>
+      <Persons list={persons} search={searchName} />
     </div>
   );
 };
