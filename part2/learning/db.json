@@ -28,13 +28,13 @@
       "id": 5,
       "content": "note baru",
       "date": "2021-12-22T02:30:42.632Z",
-      "important": false
+      "important": true
     },
     {
       "id": 6,
       "content": "aldi gunawan",
       "date": "2021-12-22T03:04:13.836Z",
-      "important": true
+      "important": false
     }
   ]
 }
