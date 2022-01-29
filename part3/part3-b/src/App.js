@@ -1,19 +1,19 @@
-import axios from "axios";
-import React, { useState, useEffect } from "react";
-import Note from "./components/Note";
-import noteService from "./services/notes";
+import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import Note from './components/Note';
+import noteService from './services/notes';
 
 const Notification = ({ message }) => {
   if (message === null) {
     return null;
   }
-  return <div className="error">{message}</div>;
+  return <div className='error'>{message}</div>;
 };
 
 const Footer = () => {
   const footerStyle = {
-    color: "green",
-    fontStyle: "italic",
+    color: 'green',
+    fontStyle: 'italic',
     fontSize: 16,
   };
   return (
@@ -27,13 +27,9 @@ const Footer = () => {
 };
 
 const App = () => {
-  // state notes
   const [notes, setNotes] = useState([]);
-  // state new notes
-  const [newNote, setNewNote] = useState("a new note...");
-  // state show only important
+  const [newNote, setNewNote] = useState('a new note...');
   const [showAll, setShowAll] = useState(true);
-  // notes to show function
   const notesToShow = showAll
     ? notes
     : notes.filter((note) => note.important === true);
@@ -41,13 +37,13 @@ const App = () => {
 
   useEffect(() => {
     // noteService.getAll().then((initialNotes) => setNotes(initialNotes));
-    axios.get("/api/notes").then((res) => setNotes(res.data));
+    axios.get('/api/notes').then((res) => setNotes(res.data));
   }, []);
 
   // event new notes
   const addNote = (event) => {
     event.preventDefault();
-    console.log("button clicked", event.target);
+    console.log('button clicked', event.target);
     const noteObject = {
       content: newNote,
       date: new Date().toISOString(),
@@ -92,7 +88,7 @@ const App = () => {
       <Notification message={errorMessage} />
       <div>
         <button onClick={() => setShowAll(!showAll)}>
-          show {showAll ? "important" : "all"}
+          show {showAll ? 'important' : 'all'}
         </button>
       </div>
       <ul>
@@ -106,7 +102,7 @@ const App = () => {
       </ul>
       <form onSubmit={addNote}>
         <input value={newNote} onChange={handleNoteChange} />
-        <button type="submit">save</button>
+        <button type='submit'>save</button>
       </form>
       <Footer />
     </div>
