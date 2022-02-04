@@ -1,0 +1,16 @@
+.error {
+  background-color: rgba(196, 182, 182, 0.555);
+  color: red;
+  border: 5px solid red;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+}
+.success {
+  background-color: rgba(196, 182, 182, 0.555);
+  color: green;
+  border: 5px solid green;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1.2rem;
+}
