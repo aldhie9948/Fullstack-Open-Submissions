@@ -108,29 +108,28 @@ const CreateNew = (props) => {
     info.reset();
   };
 
+  const spreadAttr = (obj) => {
+    const { reset, ...attr } = obj;
+    return attr;
+  };
+
+  spreadAttr(content);
+
   return (
     <div>
       <h2>create a new anecdote</h2>
       <form onSubmit={handleSubmit}>
         <div>
           content
-          <input
-            name='content'
-            value={content.value}
-            onChange={content.onChange}
-          />
+          <input name='content' {...spreadAttr(content)} />
         </div>
         <div>
           author
-          <input
-            name='author'
-            value={author.value}
-            onChange={author.onChange}
-          />
+          <input name='author' {...spreadAttr(author)} />
         </div>
         <div>
           url for more info
-          <input name='info' value={info.value} onChange={info.onChange} />
+          <input name='info' {...spreadAttr(info)} />
         </div>
         <button type='submit'>create</button>
         <button type='reset' onClick={handleReset}>

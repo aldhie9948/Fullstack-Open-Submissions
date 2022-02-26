@@ -32,17 +32,14 @@ const App = () => {
       setUser(user);
       blogService.setToken(user.token);
     }
-    console.log('fire useEffect Loggedin');
   }, []);
 
   useEffect(() => {
     if (user) {
       blogService.getAll().then((res) => {
         const blogs = res.sort((a, b) => b.likes - a.likes);
-        // .filter((blog) => blog.user.username === user.username);
         setBlogs(blogs);
       });
-      console.log('fire useEffect getAll()');
     }
   }, [user]);
 
